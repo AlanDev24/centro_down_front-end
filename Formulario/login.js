@@ -27,7 +27,10 @@ document.addEventListener('DOMContentLoaded', function () {
           alert('No se encontró usuario con esas credenciales');
         } else {
             
-          document.cookie = `token=${data.body}; path=/`;
+          document.cookie = `token=${data.body.token}; path=/`;
+          document.cookie = `correo=${data.body.correo}; path=/`;
+
+          window.location.href = 'test.html';
         }
       })
       .catch(error => {

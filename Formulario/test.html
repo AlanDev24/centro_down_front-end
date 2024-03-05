@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Token</title>
+</head>
+<body>
+    <h1>Bienvenido</h1>
+
+    <form id="registro-form" action="/procesar_registro" method="post" enctype="multipart/form-data">
+        <button type="submit" class="btn" id="btn-primary">Eliminar</button>
+    </form>
+</body>
+<script>
+    function verificarToken() {
+        var cookies = document.cookie.split(';');
+        
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            
+            if (cookie.startsWith('token=')) {
+                return;
+            }
+        }
+        alert('No tiene acceso. Por favor, inicie sesión.');
+        window.location.href = 'login.html';
+    }
+    window.onload = verificarToken;
+
+</script>
+<script src="eliminar.js"></script>
+</html>
