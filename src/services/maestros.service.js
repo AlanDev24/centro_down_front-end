@@ -7,13 +7,13 @@ export class MaestrosService {
 
     }
 
-    async autenticar() {
+    async autenticar(id, password) {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
-            "id": 1,
-            "password": 12345
+            "id": id,
+            "password": password
         });
 
         const requestOptions = {
@@ -30,6 +30,7 @@ export class MaestrosService {
 
             if(token){
                 LocalStorageService.setItem('token',token)
+                LocalStorageService.setItem('id',maestro.id)
                 return maestro
 
             }

@@ -5,6 +5,8 @@ window.customElements.define('error-dialog', ErrorDialog)
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('registro-form');
 
+  localStorage.clear();
+
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
 
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const maestroService = new MaestrosService()
   
     try {
-        const maestro = await maestroService.autenticar()
+        const maestro = await maestroService.autenticar(id,contrasena)
         window.location.href = '../Nota/formulario-nota.html'
     } catch (error) {
       mostrarDialogoError(error.message)

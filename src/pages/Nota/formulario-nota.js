@@ -27,19 +27,19 @@ document.addEventListener('DOMContentLoaded', async function () {
         select.appendChild(opcion)
     })
 
-    async function guardarNota(){
+    async function guardarNota() {
         const fechaInput = document.getElementById('fecha');
         const textoInput = document.getElementById('texto');
 
-        
+
         const nota = {
-            maestro: 1,
+            maestro: localStorage.getItem('id'),
             alumno: select.value,
             fecha: fechaInput.value,
             cuerpo: textoInput.value
         }
 
-        if(nota.maestro&&nota.alumno&&nota.cuerpo){
+        if (nota.maestro && nota.alumno && nota.cuerpo) {
             try {
                 const notaService = new NotasService()
                 const notaNueva = await notaService.addNota(nota)
@@ -52,12 +52,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             } catch (error) {
                 mostrarDialogoError('Error interno del sistema')
             }
-    
+
         }
-        else{
+        else {
             mostrarDialogoError("Introduce todos los datos")
         }
-       
+
     }
 
     const btnSave = document.getElementById('save')
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         popup.textContent = "Al confirmar aceptas que la información se guarde tal cual como la escribiste."
         popup.setAttribute('accept-text', 'Si, guardar')
         popup.setAttribute('cancel-text', 'No, continuar editando')
-        popup.addEventListener('click',async (event)=>{
-            if(event.target.id="accept"){
+        popup.addEventListener('click', async (event) => {
+            if (event.target.id = "accept") {
                 await guardarNota()
                 popup.remove()
             }
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     })
 
-    
+
 
     function mostrarDialogoError(mensaje) {
         const popup = document.createElement('error-dialog')
