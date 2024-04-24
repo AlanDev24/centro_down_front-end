@@ -1,41 +1,35 @@
+import { ErrorDialog } from "../../components/popups/errordlg.component.js";
+import { MaestrosService } from "../../services/maestros.service.js";
+window.customElements.define('error-dialog', ErrorDialog)
+
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('registro-form');
 
-  form.addEventListener('submit', function (event) {
+  form.addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    const nombreUsuario = document.getElementById('correo').value;
+    const id = document.getElementById('id').value;
     const contrasena = document.getElementById('pwd').value;
 
-    console.log()
+    //usar servicio
+    const maestroService = new MaestrosService()
+  
+    try {
+        const maestro = await maestroService.autenticar()
+        window.location.href = '../Nota/formulario-nota.html'
+    } catch (error) {
+      mostrarDialogoError(error.message)
+    }
 
-    fetch('http://localhost:3000/usuarios/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        correo:nombreUsuario,
-        password: contrasena,
-      })
-      
-    }).then(response => {
-      return response.json();
-    })
-      .then(data => {
-        if (data.mensaje.includes('fail')) {
-          alert('No se encontró usuario con esas credenciales');
-        } else {
-            
-          document.cookie = `token=${data.body.token}; path=/`;
-          document.cookie = `correo=${data.body.correo}; path=/`;
-
-          window.location.href = 'test.html';
-        }
-      })
-      .catch(error => {
-        console.log(error);
-        alert('Error al iniciar sesión. Verifica tus credenciales.');
-      });
   });
+
+  
+  function mostrarDialogoError(mensaje) {
+      const popup = document.createElement('error-dialog')
+      popup.setAttribute('title', 'Ha ocurrido un error!')
+      popup.textContent = mensaje
+
+      document.getElementsByTagName('body')[0].appendChild(popup)
+
+  }
 });

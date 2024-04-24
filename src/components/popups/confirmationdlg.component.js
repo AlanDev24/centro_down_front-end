@@ -1,3 +1,4 @@
+
 export class ConfirmationDialog extends HTMLElement {
 
     constructor() {
@@ -48,20 +49,6 @@ export class ConfirmationDialog extends HTMLElement {
         btnCancel.addEventListener("click", () => {
             this.remove()
         })
-        let btnAccept = shadow.querySelector('#accept')
-        btnAccept.addEventListener("click", () => {
-            try {
-                //TODO guardar nota
-                this.remove()
-                //throw new Error('test')
-
-                this.#mostrarDialogoExito()
-                //window.history.back();
-            } catch (error) {
-                console.log(error);
-                this.#mostrarDialogoError()//si ocurre un error
-            }
-        })
     }
 
     #agregarEstilo(shadow) {
@@ -69,25 +56,6 @@ export class ConfirmationDialog extends HTMLElement {
         link.setAttribute("rel", "stylesheet")
         link.setAttribute("href", "/../src/components/popups/popup.component.css")
         shadow.appendChild(link)
-    }
-
-    #mostrarDialogoError() {
-        const popup = document.createElement('error-dialog')
-        popup.setAttribute('title', 'Ha ocurrido un error!')
-        popup.textContent = "Error interno del servidor, intenta más tarde"
-
-        document.getElementsByTagName('body')[0].appendChild(popup)
-
-    }
-
-    #mostrarDialogoExito() {
-        const popup = document.createElement('success-dialog')
-        popup.setAttribute('title', 'Nota guardada correctamente')
-        popup.textContent = "Tus cambios se han guardado"
-        popup.setAttribute('accept-text', 'Volver al inicio')
-        popup.setAttribute('option-text', 'Agregar otra nota')
-
-        document.getElementsByTagName('body')[0].appendChild(popup)
     }
 
 }

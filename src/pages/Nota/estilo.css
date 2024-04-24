@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+
+  .placeholder {
+    width: 200px; /* Ancho del placeholder */
+    height: 50px; /* Alto del placeholder */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #af8383; /* Color de fondo rojo */
+    margin-right: 10px; /* Espacio a la derecha del placeholder */
+    margin-bottom: 20px; /* Espacio debajo del placeholder */
+    float: left; /* Para alinear a la izquierda */
+}
+
+  .navbar {
+    background-color: #FFFF;
+    overflow: hidden;
+    color: black;
+  }
+  
+  .navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: fit-content;
+  }
+  
+  .navbar-left {    
+    float: left;
+    margin-right: 10px; /* Ajusta el margen derecho para separar los elementos del navbar */
+}
+
+.navbar-left li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navbar-left li:first-child {
+    margin-right: 10px; /* Ajusta el margen derecho solo para el primer elemento del navbar */
+}
+
+  
+  .navbar li {
+    float: left;
+  }
+  
+  .navbar li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .navbar li a:hover {
+    background-color: rgb(238, 238, 238);
+  }
+  .navbar li.selected {
+    background-color: rgb(238, 238, 238);
+  }
+  
+  .user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+  
+  .container {
+    margin: 20px auto;
+    width: 50%;
+  }
+  
+  .centered-text {
+    text-align: center;
+  }
+
+  .centered-text {
+    margin-bottom: 100px; /* Ajusta el margen inferior para dar más espacio */
+    font-size: 60px; /* Ajusta el tamaño de fuente del encabezado */
+}
+
+  
+  .left-text {
+    text-align: left;
+  }
+  
+  input,select{
+    border-radius: 4px;
+    padding: 13px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  #nombre,
+  #fecha {
+    width: calc(50% - 5px); /* Ancho de los elementos */
+  }
+    
+  textarea {
+    width: 100%;
+    resize: none;
+  }
+    
+  .observations {
+    text-align: center;
+  }
+  
+  textarea {
+    width: 100%; 
+    resize: none; 
+  }
+
+  
+  textarea::placeholder {
+    color: rgba(0, 0, 0, 0.3); /* Color de texto con baja opacidad */
+}
+  
+.buttons {
+    text-align: center;
+  }
+  
+  .save,
+  .cancel {
+    width: 150px;
+    height: 40px;
+    padding: 10px 20px;
+    margin: 0 10px;
+  }
+  
+  .save:hover,
+  .cancel:hover {
+    z-index: 2; /* Aumenta el z-index cuando se pasa el mouse sobre los botones */
+  } 
+
+  .btn-primary {
+    background-color: rgb(196, 187, 247); /* Cambia el color del botón de guardar */
+    border: none;
+    width: 150px; /* Ajusta el ancho del botón */
+    height: 40px; /* Ajusta el largo del botón */
+}
+
+.btn-secondary {
+    background-color: rgb(238, 102, 102); /* Cambia el color del botón de cancelar */
+    border: none;
+    width: 150px; /* Ajusta el ancho del botón */
+    height: 40px; /* Ajusta el largo del botón */
+}
+
+.btn-lg {
+    padding: 10px 20px; /* Ajusta el padding para hacer los botones más largos */
+}
+
+.btn-separado {
+    margin-right: 100px; /* Ajusta el valor del margen entre los botones */
+}
+
+  
+/* Estilos para campos de entrada inválidos */
+input:invalid,
+select:invalid {
+  border: 2px solid red;
+}
+
+/* Estilos para campos de entrada requeridos sin llenar */
+input:required:invalid,
+select:required:invalid {
+  background-color: rgba(255, 0, 0, 0.2); /* Fondo rojo semitransparente */
+}
+
+/* Estilos para el mensaje de validación */
+.validation-message {
+    font-size: 8px;
+    color: red;
+    display: block;
+    margin-top: 4px; /* Ajusta el margen superior para separar el mensaje del campo */
+  }
+
